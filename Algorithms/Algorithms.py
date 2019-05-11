@@ -2,7 +2,7 @@
 
 def Euclidean(a, b):
   '''
-  Find the GCD of two numbers using the Euclidean Algorithm\n
+  Find the GCD of a, b using the Euclidean Algorithm\n
   Inputs:
     integers a, b
   Outputs:
@@ -15,7 +15,7 @@ def Euclidean(a, b):
 
 def GCD(a, b):
   '''
-  Find the GCD of two numbers using the Euclidean Algorithm\n
+  Find the GCD of a, b using the Euclidean Algorithm\n
   Alias of Euclidean(a, b)\n
   Inputs:
     integers a, b
@@ -27,7 +27,7 @@ def GCD(a, b):
 
 def ExtendedEuclidean(a, b):
   '''
-  If the GCD of a, b is 1, find x, y such that ax + by = 1
+  If the GCD of a, b is 1, find x, y such that ax + by = 1\n
   Inputs:
     integers a, b
   Outputs:
@@ -54,7 +54,7 @@ def ExtendedEuclidean(a, b):
 
 def ModularInv(a, n, prime=False):
   '''
-  Computes the modular inverse of a mod n
+  Computes the modular inverse of a mod n\n
   Inputs:
     integers a, n
     (optional) boolean prime
@@ -74,7 +74,7 @@ def ModularInv(a, n, prime=False):
 
 def FastPower(a, e, n):
   '''
-  Computes the exponentiation of a^e mod n by successive squaring
+  Computes the exponentiation of a^e mod n by successive squaring\n
   Inputs:
     integers a, e, n
   Output:

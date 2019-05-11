@@ -1,1 +1,2 @@
-from . import Fermat
+from . import Primality
+from . import Algorithms

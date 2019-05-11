@@ -20,6 +20,7 @@ Mathematical cryptography algorithms implemented in Python
 ##### Primality Tests
 * Euler's Criterion
 * Solovay-Strassen
+* Miller-Rabin
 
 ##### Ciphers
 * Rabin Cipher

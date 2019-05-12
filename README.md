@@ -4,10 +4,10 @@ Mathematical cryptography algorithms implemented in Python
 ### Possible algorithms to implement
 
 ##### Basic
-* Euclidean
-* Extended Euclidean
-* Fast-Powering
-* Modular Inverse
+* Euclidean - done
+* Extended Euclidean - done
+* Fast-Powering - done
+* Modular Inverse - done
 * Chinese Remainder Theorem
 
 ##### Polynomials
@@ -18,7 +18,8 @@ Mathematical cryptography algorithms implemented in Python
 * 3 mod 4 Square Root Shortcut
 
 ##### Primality Tests
-* Euler's Criterion
+* Fermat Test - done
+* Euler's Criterion - done
 * Solovay-Strassen
 * Miller-Rabin
 

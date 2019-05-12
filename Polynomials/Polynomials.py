@@ -24,7 +24,7 @@ def IsSquare(a, n):
 #TODO
 def SquareRoots(a, n):
   '''
-  If a is a quadratic residue mod n, return its square roots
+  If a is a quadratic residue mod n, return its square roots\n
   Inputs:
     integers a, n
   Output:
@@ -38,5 +38,7 @@ def SquareRoots(a, n):
   # Check for 3 mod 4 shortcut
 
   # Else, perform Tonneli-Shanks
+
+  # Hensel's Lemma?
 
   return 0

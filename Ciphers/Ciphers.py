@@ -10,7 +10,7 @@ def RabinCipher():
 #TODO
 def AffineEncrypt(m, a, b, n):
   '''
-  Encrypts a message m using the affine cipher: c = am + b mod n
+  Encrypts a message m using the affine cipher: c = am + b mod n\n
   Inputs:
     string m (message)
     integers a, b, n (alphabet length)
@@ -22,7 +22,7 @@ def AffineEncrypt(m, a, b, n):
 #TODO
 def AffineDecrypt(c, a, b, n):
   '''
-  Decrypts a ciphertext c using the affine cipher: m = (c - b)a^-1 mod n
+  Decrypts a ciphertext c using the affine cipher: m = (c - b)a^-1 mod n\n
   Inputs:
     string c (ciphertext)
     integers a, b, n (alphabet length)

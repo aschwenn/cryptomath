@@ -1,9 +1,7 @@
 # Probablistic primality testing
 
-from Algorithms import FastPower
+from ..Algorithms import FastPower
 
 def FermatTest(a, p):
   f = FastPower(a, p-1, p)
   return f == 1
-
-print(FermatTest(3, 11))

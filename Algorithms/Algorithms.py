@@ -81,3 +81,13 @@ def FastPower(a, e, n):
     integer aPow
   '''
   return pow(a, e, n)
+
+#TODO
+def ChineseRemainderThm(a, m, b, n):
+  '''
+  Finds one modular congruency x = c mod mn that is equivalent to the linear congruencies x = a mod m, x = b mod n\n
+  Inputs:
+    integers a, m, b, n
+  Outputs:
+    integers c, mn
+  '''

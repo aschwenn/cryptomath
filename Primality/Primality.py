@@ -1,6 +1,8 @@
 # Probablistic primality testing
 
 from ..Algorithms import FastPower
+from math import log10
+from .primes import *
 
 def FermatTest(a, n):
   '''
@@ -38,8 +40,20 @@ def IsPrime(n):
     boolean p (false if composite, true if "probably prime")
   '''
 
-  base = []
-  # Call to Miller-Rabin
+  if n % 2 == 0:
+    return False
 
-  print('Function IsPrime(n) not yet implemented')
-  return True
+  length = log10(n)
+
+  if length < 4:
+      # Use lookup table
+      if n in smallPrimes:
+        return True
+      else:
+        return False
+  else:
+    base = []
+    # Call to Miller-Rabin
+
+    print('Function IsPrime(n) not yet implemented')
+    return True

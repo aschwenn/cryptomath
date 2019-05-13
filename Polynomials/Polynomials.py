@@ -2,7 +2,7 @@
 
 from ..Algorithms import GCD
 from ..Primality import IsPrime
-from ..Factorization import PrimeFactorization
+from ..Factorization import PrimeFactorizationSmall
 from math import sqrt, floor
 
 #TODO
@@ -68,7 +68,7 @@ def JacobiSymbol(a, n):
 
       # (ab/n) = (a/n)(b/n)
       elif not IsPrime(a):
-        factorization = PrimeFactorization(a)
+        factorization = PrimeFactorizationSmall(a)
         parts = []
         for fac in factorization:
           parts.append(fac[0] ** fac[1])
@@ -91,7 +91,7 @@ def JacobiSymbol(a, n):
   elif not IsPrime(n):
     # For a composite n, the Jacobi symbol is defined as:
     # (a / n) = (a / p1)^e1 * (a / p2)^e2 * ...
-    factorization = PrimeFactorization(n)
+    factorization = PrimeFactorizationSmall(n)
     symbol = 1
     for factor in factorization:
       symbol *= LegendreSymbol(a, factor[0]) ** factor[1]

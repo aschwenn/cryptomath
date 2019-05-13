@@ -1,6 +1,9 @@
 # cryptomath
 Mathematical cryptography algorithms implemented in Python
 
+### Dev notes
+* I haven't implemented exception handling yet, so everywhere I'll want to raise an exception is marked with an 'ERROR' comment
+
 ### Possible algorithms to implement
 
 ##### Basic

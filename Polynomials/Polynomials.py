@@ -104,6 +104,8 @@ def ModSquareRoots(a, n):
   Output:
     integers r1, r2
   '''
+  print('Function ModSquareRoots(n) not yet implemented')
+
   if JacobiSymbol(a, n) == -1:
     # There are no square roots for a mod n
     # ERROR

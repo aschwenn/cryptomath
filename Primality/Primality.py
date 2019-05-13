@@ -23,6 +23,7 @@ def MillerRabin(n, tries=10, base=[]):
   Outputs:
     boolean m (false if composite, true if "probably prime")
   '''
+  print('Function MillerRabin(n) not yet implemented')
 
   #https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Accuracy
   return 0

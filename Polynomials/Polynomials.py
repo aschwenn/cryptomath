@@ -71,7 +71,12 @@ def JacobiSymbol(a, n):
         factorization = PrimeFactorizationSmall(a)
         parts = []
         for fac in factorization:
-          parts.append(fac[0] ** fac[1])
+          if fac[1] % 2 == 0:
+            # factor is a square, symbol is 1
+            continue
+          else:
+            for i in range(fac[1]):
+              parts.append(fac[0])
         symbol = 1
         for p in parts:
           symbol *= LegendreSymbol(p, n)

@@ -9,4 +9,5 @@ def GeneratePrime(length):
   Output:
     integer p
   '''
+  print('Function GeneratePrime(n) not yet implemented')
   return 0

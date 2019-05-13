@@ -9,9 +9,12 @@ def Euclidean(a, b):
     integer GCD
   Runtime: O(log(min(a,b)))
   '''
-  if a == 0:
-    return b
-  return Euclidean(b % a, a)
+  # Iterative so as to not exceed Python recursion depth
+  while a != 0:
+    temp = a
+    a = b % a
+    b = temp
+  return b
 
 def GCD(a, b):
   '''

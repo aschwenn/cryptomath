@@ -1,6 +1,7 @@
 # Implementation of Pollard's rho algorithm for factoring integers
 
 from ..Primality.primes import *
+from ..Primality import IsPrime
 from math import floor, log
 from ..Algorithms import FastPower, GCD
 from random import randint
@@ -38,8 +39,8 @@ def PollardP_1(n, b=0):
         # Pick another a coprime to n
         x = randint(3, n)
         gx = GCD(x,n)
-        if gx != 1:
-          return gx
+        if gx != 1 and gx != n:
+          return gx, m, endPrime
         g = GCD(FastPower(x, m, n) - 1, n)
         if g > 1 and g < n:
           return g, m, endPrime
@@ -62,7 +63,7 @@ def PollardP_1(n, b=0):
     product = 1
     endPrime = 2
     for i in range(50,0,-5):
-      factor, product, endPrime = pollardInternal(n, floor(multiplier / i), product, endPrime)
+      factor, product, endPrime = pollardInternal(n, multiplier // i, product, endPrime)
       if factor > 1:
         return factor
 
@@ -95,7 +96,7 @@ def Pollard(n):
     return -1
   return g
 
-def FactorSmall(n):
+def FactorSmall(n, dup=False):
   '''
   Returns a list of the factors of n, where n is assumed to be less than 10^50\n
   Input:
@@ -103,8 +104,37 @@ def FactorSmall(n):
   Output:
     list of integers f
   '''
-  print('Function FactorSmall(n) not yet implemented')
-  return []
+  if IsPrime(n):
+    return [n]
+
+  def FactorRecursive(n):
+    factor = Pollard(n)
+
+    if factor == -1:
+      factor = PollardP_1(n)
+      if factor == -1:
+        # ERROR
+        # Failure to find a factor
+        return []
+
+    factor2 = n // factor
+    if IsPrime(factor2):
+      return [factor, factor2]
+    else:
+      return [factor] + FactorRecursive(factor2)
+
+  factors = FactorRecursive(n)
+  factors.sort()
+
+  if dup:
+    return factors
+
+  factors2 = []
+  for f in factors:
+    if not f in factors2:
+      factors2.append(f)
+
+  return factors2
 
 def PrimeFactorizationSmall(n):
   '''
@@ -114,5 +144,12 @@ def PrimeFactorizationSmall(n):
   Output:
     list of tuples of integers (factor, exponent)
   '''
-  print('Function PrimeFactorizationSmall(n) not yet implemented')
-  return []
+  factors = FactorSmall(n, True)
+  pf = []
+  pf.append([factors[0],1])
+  for fac in factors[1:]:
+    if pf[-1][0] == fac:
+      pf[-1][1] += 1
+    else:
+      pf.append([fac,1])
+  return pf

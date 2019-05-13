@@ -3,7 +3,6 @@
 from ..Polynomials import JacobiSymbol
 from ..Algorithms import FastPower
 from random import randint
-from math import floor
 
 def EulerTest(a, n):
   '''
@@ -13,7 +12,7 @@ def EulerTest(a, n):
   Output:
     boolean e (false if composite, true if "probably prime")
   '''
-  e = FastPower(a, floor((n-1)/2), n) == JacobiSymbol(a, n)
+  e = FastPower(a, (n-1)//2, n) == JacobiSymbol(a, n)
   return e
 
 def SolovayStrassenTest(n, tries=10):

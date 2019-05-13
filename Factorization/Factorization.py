@@ -19,22 +19,24 @@ def PrimeFactorization(n):
   return []
 
 #TODO
-def Factor(n):
+def Factors(n, dup=False):
   '''
   Returns a list of the factors of n
   Input:
     integer n
+    (optional) dup - include duplicate factors
   Output:
     list of integers f
   '''
-  print('Function Factor(n) not yet implemented')
-
   # Using the following link for guidance...
   # https://stackoverflow.com/questions/2267146/what-is-the-fastest-factorization-algorithm
 
+  if IsPrime(n):
+    return [n]
+
   def FactorRecursive(n):
     length = floor(log10(n))
-    print(length)
+    #print('Recursive: factoring ' + str(n) + ', ' + str(length) + ' digits')
 
     if length <= 21:
       # Use Pollard's
@@ -50,16 +52,28 @@ def Factor(n):
       print('Number is too big to factor')
       return []
 
-    factor2 = floor(n / factor)
+    if factor == -1:
+      # ERROR
+      # Failure to find a factor
+      return []
+
+    factor2 = n // factor
     if IsPrime(factor2):
+      #print('Result: ' + str(factor) + ',' + str(factor2) + ', both prime')
       return [factor, factor2]
     else:
-      return [factor, Factor(factor2)]
+      #print('Result: ' + str(factor) + ',' + str(factor2) + ', not both prime')
+      return [factor] + FactorRecursive(factor2)
 
   factors = FactorRecursive(n)
-  factors.append(1)
-  factors.append(n)
-  print(factors)
   factors.sort()
 
-  return factors
+  if dup:
+    return factors
+
+  factors2 = []
+  for f in factors:
+    if not f in factors2:
+      factors2.append(f)
+
+  return factors2

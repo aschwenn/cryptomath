@@ -40,7 +40,7 @@ def IsPrime(n):
     boolean p (false if composite, true if "probably prime")
   '''
 
-  if n % 2 == 0:
+  if n % 2 == 0 and n != 2:
     return False
 
   length = log10(n)
@@ -52,6 +52,10 @@ def IsPrime(n):
       else:
         return False
   else:
+
+    #temporary solution
+    return FermatTest(2,n) and FermatTest(3,n) and FermatTest(5,n) and FermatTest(7,n) and FermatTest(11,n)
+
     base = []
     # Call to Miller-Rabin
 

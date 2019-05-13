@@ -47,6 +47,7 @@ Mathematical cryptography algorithms implemented in Python
 ##### Factoring
 * Quadratic Sieve
 * Lenstra's Algorithm (elliptic curves)
+* Pollard's p-1
 
 ##### Secret Sharing
 * Blakely (hyperplanes)

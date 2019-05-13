@@ -70,7 +70,7 @@ def ModularInv(a, n, prime=False):
       return x % n
     else:
       # ERROR: There is no Modular inverse for a mod n
-      return null
+      return None
 
 def FastPower(a, e, n):
   '''

@@ -91,4 +91,6 @@ def ChineseRemainderThm(a, m, b, n):
   Outputs:
     integers c, mn
   '''
-  
+  g, s, t = ExtendedEuclidean(m, n)
+  c = (b * m * s + a * n * t) % (m * n)
+  return c, (m * n)

@@ -44,6 +44,20 @@ def JacobiSymbol(a, n):
         if n % 8 == 1 or n % 8 == 7:
           return 1
         return -1
+
+      # (-3/n) gives +1 for n = 1 mod 6, -1 for n = 5 mod 6
+      elif a == n - 3:
+        if n % 6 == 1:
+          return 1
+        elif n % 6 == 5:
+          return -1
+
+      # (5/n) gives +1 for n = 1,9 mod 10, -1 for n = 3,7 mod 10
+      elif a == 5:
+        if n % 10 == 1 or n % 10 == 9:
+          return 1
+        elif n % 10 == 3 or n % 10 == 7:
+          return -1
       
       # if a,n odd, (a/n) gives -(n/a) if a,n = 3 mod 4, (n/a) otherwise
       elif a % 2 == 1:

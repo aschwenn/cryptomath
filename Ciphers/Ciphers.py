@@ -17,6 +17,7 @@ def AffineEncrypt(m, a, b, n):
   Output:
     string c (ciphertext)
   '''
+  print('Function AffineEncrypt(m, a, b, n) not yet implemented')
   return 0
 
 #TODO
@@ -29,4 +30,5 @@ def AffineDecrypt(c, a, b, n):
   Output:
     string m (message)
   '''
+  print('Function AffineDecrypt(c, a, b, n) not yet implemented')
   return 0

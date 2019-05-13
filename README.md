@@ -28,7 +28,6 @@ Mathematical cryptography algorithms implemented in Python
 * Affine Cipher
 
 ##### Discrete Logs
-* Diffie-Hellman
 * Pohlig-Hellman
 * Shanks Babystep-Giantstep
 

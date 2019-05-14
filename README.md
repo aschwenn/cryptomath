@@ -14,9 +14,10 @@ Mathematical cryptography algorithms implemented in Python
 * Fast-Powering - done
 * Modular Inverse - done
 * Chinese Remainder Theorem - done
+* Totient function
 
 ##### Polynomials
-* Jacobi/Legendre Symbols - done (unfinished dependencies)
+* Jacobi/Legendre Symbols - done
 * Tonneli-Shanks
 * Hensel's Lemma
 * Modular Quadratic Solver
@@ -26,7 +27,7 @@ Mathematical cryptography algorithms implemented in Python
 * Fermat Test - done
 * Euler's Criterion - done
 * Solovay-Strassen - done
-* Miller-Rabin
+* Miller-Rabin - done
 
 ##### Ciphers
 * Rabin Cipher
@@ -38,7 +39,7 @@ Mathematical cryptography algorithms implemented in Python
 
 ##### Generators
 * Primitive Roots
-* Large Primes
+* Large Primes - done
 * Sophie Germain Strong Primes
 
 ##### Cryptosystems

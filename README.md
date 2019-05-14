@@ -3,6 +3,8 @@ Mathematical cryptography algorithms implemented in Python
 
 ### Dev notes
 * I haven't implemented exception handling yet, so everywhere I'll want to raise an exception is marked with an 'ERROR' comment
+* Use 'secrets' instead of 'random' for cryptographically secure random number generation: https://docs.python.org/3/library/secrets.html
+* On parallelization random number generation: https://ieeexplore.ieee.org/document/5547156
 
 ### Possible algorithms to implement
 

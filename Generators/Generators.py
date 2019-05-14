@@ -1,22 +1,18 @@
 # Number generators
 
 from ..Primality import MillerRabin
-import random
 import threading
-
-import secrets
+from secrets import randbits
 
 possibleNum = 0
 
 count = 0
 
 def genNum(length, lock):
-  rand = random.Random()
-  rand.seed()
   global possibleNum
   global count
   while not possibleNum:
-    x = random.randint(2 ** (length - 1), 2 ** (length) - 1)
+    x = randbits(length)
     lock.acquire()
     try:
       count += 1
@@ -28,6 +24,7 @@ def genNum(length, lock):
         possibleNum = x
       finally:
         lock.release()
+  print(str(threading.get_ident()) + ' closing, count=' + str(count))
 
 def GenerateProbablePrime(length):
   '''
@@ -53,7 +50,7 @@ def GenerateProbablePrime(length):
 
   return possibleNum
 
-def GenerateProbablePrimeNonThreaded(length):
+def GenerateProbablePrimeSerial(length):
   '''
   Generates a random prime number of a specified binary length, not multithreaded
   Input:
@@ -63,7 +60,7 @@ def GenerateProbablePrimeNonThreaded(length):
   '''
   count = 0
   while True:
-    x = random.randint(2 ** (length - 1), 2 ** (length) - 1)
+    x = randbits(length)
     count += 1
     if MillerRabin(x):
       print('Count: ' + str(count))

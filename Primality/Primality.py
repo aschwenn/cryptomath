@@ -1,7 +1,7 @@
 # Probablistic primality testing
 
 from ..Algorithms import FastPower
-from math import log10
+from math import log10, log, floor
 from .primes import *
 
 def FermatTest(a, n):
@@ -16,19 +16,55 @@ def FermatTest(a, n):
   return f == 1
 
 #TODO
-def MillerRabin(n, tries=10, base=[]):
+def MillerRabin(n, warnings=False):
   '''
   Performs the Miller-Rabin Test on possible prime n\n
-  Inputs:
-    integers n, tries (optional, default: 10)
-    integer list base (optional)
+  Input:
+    integers n
+    boolean warnings (optional, show warnings)
   Outputs:
     boolean m (false if composite, true if "probably prime")
   '''
-  print('Function MillerRabin(n) not yet implemented')
-
   #https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Accuracy
-  return 0
+  
+  # If the generalized Riemann hypothesis is true, Miller-Rabin can be made deterministic
+  if not n > 1:
+    raise Exception('MillerRabin(n): n must be strictly greater than 1')
+  # Express as n = 2^r*d + 1
+  np = n - 1
+  r = 0
+  while np % 2 == 0:
+    r += 1
+    np = np // 2
+  d = np
+  
+  witnessRange = min([n-2, floor(2*(log(n)**2))])
+  aIndex = 0
+  while smallPrimes[aIndex] < witnessRange:
+    x = FastPower(smallPrimes[aIndex], d, n)
+    if x == 1 or x == n-1:
+      # Failure to find a witness
+      aIndex += 1
+      if aIndex == len(smallPrimes):
+        if warnings:
+          print('List of small primes for Miller-Rabin bases has been exhausted for n=' + str(n))
+          print('The result is probabalistically determined to be prime.')
+        return 1
+      continue
+    else:
+      for i in range(r - 1):
+        x = FastPower(x, 2, n)
+        if x == n-1:
+          # Failure to find a witness
+          aIndex += 1
+          if aIndex == len(smallPrimes):
+            if warnings:
+              print('List of small primes for Miller-Rabin bases has been exhausted for n=' + str(n))
+              print('The result is probabalistically determined to be prime.')
+            return 1
+          continue
+    return 0
+  return 1
 
 #TODO
 def IsPrime(n):

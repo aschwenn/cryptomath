@@ -1,10 +1,35 @@
 # Number generators
 
 from ..Primality import MillerRabin
-from random import randint
+import random
+import threading
 
-#TODO
-def GenerateProbablePrime(length, truerandom=True):
+import secrets
+
+possibleNum = 0
+
+count = 0
+
+def genNum(length, lock):
+  rand = random.Random()
+  rand.seed()
+  global possibleNum
+  global count
+  while not possibleNum:
+    x = random.randint(2 ** (length - 1), 2 ** (length) - 1)
+    lock.acquire()
+    try:
+      count += 1
+    finally:
+      lock.release()
+    if MillerRabin(x):
+      lock.acquire()
+      try:
+        possibleNum = x
+      finally:
+        lock.release()
+
+def GenerateProbablePrime(length):
   '''
   Generates a random prime number of a specified binary length
   Input:
@@ -12,14 +37,34 @@ def GenerateProbablePrime(length, truerandom=True):
   Output:
     integer p
   '''
-  x = randint(2 ** (length - 1), 2 ** (length) - 1)
+  global possibleNum
+  global count
+  possibleNum = 0 # reset
+  lock = threading.Lock() # mutex lock to prevent race conditions
+  threadNum = 2 # number of threads to spawn to generate number/primality pairs
+
+  # Create list of threads
+  threads = [threading.Thread(daemon=True, target=genNum, args=(length,lock)) for i in range(threadNum)]
+  # Execute threads concurrently
+  [thread.start() for thread in threads]
+  [thread.join() for thread in threads]
+
+  print('Count: ' + str(count))
+
+  return possibleNum
+
+def GenerateProbablePrimeNonThreaded(length):
+  '''
+  Generates a random prime number of a specified binary length, not multithreaded
+  Input:
+    integer length
+  Output:
+    integer p
+  '''
+  count = 0
   while True:
-    if truerandom:
-      x = randint(2 ** (length - 1), 2 ** (length) - 1)
-    else:
-      if x + 2 > (2 ** (length) - 1):
-        x = randint(2 ** (length - 1), 2 ** (length) - 1)
-      else:
-        x = (x+2) if (x%2!=0) else (x+1)
+    x = random.randint(2 ** (length - 1), 2 ** (length) - 1)
+    count += 1
     if MillerRabin(x):
+      print('Count: ' + str(count))
       return x

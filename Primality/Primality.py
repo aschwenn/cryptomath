@@ -88,12 +88,4 @@ def IsPrime(n):
       else:
         return False
   else:
-
-    #temporary solution
-    return FermatTest(2,n) and FermatTest(3,n) and FermatTest(5,n) and FermatTest(7,n) and FermatTest(11,n)
-
-    base = []
-    # Call to Miller-Rabin
-
-    print('Function IsPrime(n) not yet implemented')
-    return True
+    return MillerRabin(n)

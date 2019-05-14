@@ -5,28 +5,27 @@ import threading
 from secrets import randbits
 
 possibleNum = 0
-
-count = 0
+#count = 0
 
 def genNum(length, lock):
   global possibleNum
-  global count
+  #global count
   while not possibleNum:
     x = randbits(length)
-    lock.acquire()
-    try:
-      count += 1
-    finally:
-      lock.release()
+    #lock.acquire()
+    #try:
+    #  count += 1
+    #finally:
+    #  lock.release()
     if MillerRabin(x):
       lock.acquire()
       try:
         possibleNum = x
       finally:
         lock.release()
-  print(str(threading.get_ident()) + ' closing, count=' + str(count))
+  #print(str(threading.get_ident()) + ' closing, count=' + str(count))
 
-def GenerateProbablePrime(length):
+def GenerateProbablePrimeThreaded(length):
   '''
   Generates a random prime number of a specified binary length
   Input:
@@ -35,7 +34,7 @@ def GenerateProbablePrime(length):
     integer p
   '''
   global possibleNum
-  global count
+  #global count
   possibleNum = 0 # reset
   lock = threading.Lock() # mutex lock to prevent race conditions
   threadNum = 2 # number of threads to spawn to generate number/primality pairs
@@ -46,11 +45,11 @@ def GenerateProbablePrime(length):
   [thread.start() for thread in threads]
   [thread.join() for thread in threads]
 
-  print('Count: ' + str(count))
+  #print('Count: ' + str(count))
 
   return possibleNum
 
-def GenerateProbablePrimeSerial(length):
+def GenerateProbablePrime(length):
   '''
   Generates a random prime number of a specified binary length, not multithreaded
   Input:
@@ -58,10 +57,10 @@ def GenerateProbablePrimeSerial(length):
   Output:
     integer p
   '''
-  count = 0
+  x = randbits(length)
+  if x % 2 == 0:
+    x += 1
   while True:
-    x = randbits(length)
-    count += 1
     if MillerRabin(x):
-      print('Count: ' + str(count))
       return x
+    x += 2

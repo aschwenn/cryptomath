@@ -54,7 +54,6 @@ def PollardP_1(n, b=0):
     factor, product, endPrime = pollardInternal(n, b)
     return factor
   elif b > 10000:
-    # ERROR
     # try to use a smaller b...
     return -1
   else:
@@ -101,6 +100,7 @@ def FactorSmall(n, dup=False):
   Returns a list of the factors of n, where n is assumed to be less than 10^50\n
   Input:
     integer n
+    dup (optional, include duplicate factors)
   Output:
     list of integers f
   '''
@@ -113,9 +113,7 @@ def FactorSmall(n, dup=False):
     if factor == -1:
       factor = PollardP_1(n)
       if factor == -1:
-        # ERROR
-        # Failure to find a factor
-        return []
+        raise Exception('FactorSmall(): Failure to find a factor for ' + str(n))
 
     factor2 = n // factor
     if IsPrime(factor2):

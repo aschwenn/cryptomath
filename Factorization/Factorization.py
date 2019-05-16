@@ -1,12 +1,11 @@
 # Factoring numbers using various techniques
 
-from .Pollard import Pollard
+from .Pollard import Pollard, PollardP_1
 from .Lenstra import Lenstra
 from .QuadraticSieve import QuadraticSieve
 from math import log10, floor
 from ..Primality import IsPrime
 
-#TODO
 def PrimeFactorization(n):
   '''
   Returns a list of the prime factorization of n, giving factors and exponents
@@ -15,10 +14,16 @@ def PrimeFactorization(n):
   Output:
     list of tuples of integers (factor, exponent)
   '''
-  print('Function PrimeFactorization(n) not yet implemented')
-  return []
+  factors = Factors(n, True)
+  pf = []
+  pf.append([factors[0],1])
+  for fac in factors[1:]:
+    if pf[-1][0] == fac:
+      pf[-1][1] += 1
+    else:
+      pf.append([fac,1])
+  return pf
 
-#TODO
 def Factors(n, dup=False):
   '''
   Returns a list of the factors of n
@@ -41,6 +46,8 @@ def Factors(n, dup=False):
     if length <= 21:
       # Use Pollard's
       factor = Pollard(n)
+      if factor == -1:
+        factor = PollardP_1(n)
     elif length <= 50:
       # Use Lenstra's
       factor = Lenstra(n)
@@ -53,16 +60,12 @@ def Factors(n, dup=False):
       return []
 
     if factor == -1:
-      # ERROR
-      # Failure to find a factor
-      return []
+      raise Exception('Factor(): Failure to find a factor for ' + str(n))
 
     factor2 = n // factor
     if IsPrime(factor2):
-      #print('Result: ' + str(factor) + ',' + str(factor2) + ', both prime')
       return [factor, factor2]
     else:
-      #print('Result: ' + str(factor) + ',' + str(factor2) + ', not both prime')
       return [factor] + FactorRecursive(factor2)
 
   factors = FactorRecursive(n)

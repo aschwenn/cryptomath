@@ -72,8 +72,7 @@ def ModularInv(a, n, prime=False):
     if GCD == 1:
       return x % n
     else:
-      # ERROR: There is no Modular inverse for a mod n
-      return None
+      raise Exception('ModularInv: ' + str(a) + ' does not have an inverse mod ' + str(n))
 
 def FastPower(a, e, n):
   '''

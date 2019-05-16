@@ -19,16 +19,10 @@ def JacobiSymbol(a, n):
     iteration = 0
     while True:
       if n % 2 == 0:
-        # Undefined for even n
-        # ERROR
-        return None
+        raise Exception('LegendreSymbol(): Legendre Symbols are undefined for even mods')
 
       # Reduce a mod n
       a = a % n
-
-      #Debugging
-      #iteration += 1
-      #print(str(iteration) + ': (' + str(a) + '/' + str(n) + ')')
 
       # if a is a square, (a/n) gives +1
       s = sqrt(a)
@@ -83,16 +77,16 @@ def JacobiSymbol(a, n):
         return symbol
 
       else:
-        # ERROR
-        print('This should not be possible...')
-        return None
+        raise Exception('LegendreSymbol(): unknown error')
 
+  a = a % n
   if GCD(a, n) > 1:
     return 0
   elif n % 2 == 0:
-    # Even mods give an undefined Jacobi Symbol
-    # ERROR
-    return None
+    if a == 1 and n == 2:
+      return -1
+    else:
+      raise Exception('JacobiSymbol(): Jacobi Symbols are undefined for even mods')
   elif not IsPrime(n):
     # For a composite n, the Jacobi symbol is defined as:
     # (a / n) = (a / p1)^e1 * (a / p2)^e2 * ...

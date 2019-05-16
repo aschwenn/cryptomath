@@ -66,7 +66,6 @@ def MillerRabin(n, warnings=False):
     return 0
   return 1
 
-#TODO
 def IsPrime(n):
   '''
   Determines probabalistically if a number is prime\n

@@ -25,9 +25,7 @@ def SolovayStrassenTest(n, tries=10):
   '''
   # Use EulerTest to test random integers from 2 to n
   if tries > n - 2:
-    # There aren't enough possible values to try which are coprime to n
-    # ERROR
-    return None
+    raise Exception('SolovayStrassenTest(): There aren\'t enough enough possible values to test which are coprime to ' + str(n) + '. Please use a lower "tries" value.')
   for i in range(tries):
     if not EulerTest(randint(2, n+1), n):
       # Found a witness for the compositeness of n

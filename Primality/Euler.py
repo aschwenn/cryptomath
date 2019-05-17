@@ -12,8 +12,11 @@ def EulerTest(a, n):
   Output:
     boolean e (false if composite, true if "probably prime")
   '''
-  e = FastPower(a, (n-1)//2, n) == JacobiSymbol(a, n)
-  return e
+  f = FastPower(a, (n-1)//2, n)
+  if f == n - 1:
+    f = -1
+  j = JacobiSymbol(a, n)
+  return f == j
 
 def SolovayStrassenTest(n, tries=10):
   '''
@@ -23,12 +26,13 @@ def SolovayStrassenTest(n, tries=10):
   Outputs:
     boolean s (false if composite, true if "probably prime")
   '''
-  # Use EulerTest to test random integers from 2 to n
+  # Use EulerTest to test random integers
+  bound = n + 1
   if tries > n - 2:
-    raise Exception('SolovayStrassenTest(): There aren\'t enough enough possible values to test which are coprime to ' + str(n) + '. Please use a lower "tries" value.')
+    bound += tries
   for i in range(tries):
-    if not EulerTest(randint(2, n+1), n):
+    a = randint(2, bound)
+    if not EulerTest(a, n):
       # Found a witness for the compositeness of n
       return False
-
   return True

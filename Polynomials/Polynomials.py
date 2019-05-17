@@ -84,7 +84,7 @@ def JacobiSymbol(a, n):
     return 0
   elif n % 2 == 0:
     if a == 1 and n == 2:
-      return -1
+      return 1
     else:
       raise Exception('JacobiSymbol(): Jacobi Symbols are undefined for even mods')
   elif not IsPrime(n):

@@ -29,7 +29,7 @@ def MillerRabin(n, warnings=False):
   
   # If the generalized Riemann hypothesis is true, Miller-Rabin can be made deterministic
   if not n > 1:
-    raise Exception('MillerRabin(n): n must be strictly greater than 1')
+    raise Exception('MillerRabin(): n must be strictly greater than 1')
   # Express as n = 2^r*d + 1
   np = n - 1
   r = 0
@@ -49,7 +49,7 @@ def MillerRabin(n, warnings=False):
         if warnings:
           print('List of small primes for Miller-Rabin bases has been exhausted for n=' + str(n))
           print('The result is probabalistically determined to be prime.')
-        return 1
+        return True
       continue
     else:
       for i in range(r - 1):
@@ -61,10 +61,10 @@ def MillerRabin(n, warnings=False):
             if warnings:
               print('List of small primes for Miller-Rabin bases has been exhausted for n=' + str(n))
               print('The result is probabalistically determined to be prime.')
-            return 1
+            return True
           continue
-    return 0
-  return 1
+    return False
+  return True
 
 def IsPrime(n):
   '''

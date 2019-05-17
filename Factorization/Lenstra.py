@@ -8,6 +8,4 @@ def Lenstra(n):
   Output:
     integer f (a single factor)
   '''
-  print('Function Lenstra(n) not yet implemented')
-
-  return 1
+  raise Exception('Function Lenstra(n) not yet implemented')

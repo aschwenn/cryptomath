@@ -8,6 +8,4 @@ def QuadraticSieve(n):
   Output:
     integer f (a single factor)
   '''
-  print('Function QuadraticSieve(n) not yet implemented')
-
-  return 1
+  raise Exception('Function QuadraticSieve(n) not yet implemented')

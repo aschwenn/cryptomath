@@ -14,14 +14,14 @@ Mathematical cryptography algorithms implemented in Python
 * Fast-Powering - done
 * Modular Inverse - done
 * Chinese Remainder Theorem - done
-* Totient function
+* Totient function - done
 
 ##### Polynomials
 * Jacobi/Legendre Symbols - done
-* Tonneli-Shanks
+* Tonneli-Shanks - done
 * Hensel's Lemma
 * Modular Quadratic Solver
-* 3 mod 4 Square Root Shortcut
+* 3 mod 4 Square Root Shortcut - done
 
 ##### Primality Tests
 * Fermat Test - done

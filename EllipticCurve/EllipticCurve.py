@@ -1,35 +1,8 @@
-#Elliptic Curve objects with corresponding functions
+# Elliptic Curve objects with corresponding functions
 
-#Until I figure out importing, I'm just going to copy ExtendedEuclidean into here
-#from ..Algorithms import ExtendedEuclidean
-def ExtendedEuclidean(a, b):
-  '''
-  If the GCD of a, b is 1, find x, y such that ax + by = 1\n
-  Inputs:
-    integers a, b
-  Outputs:
-    integers GCD, x, y
-  '''
-  x = 0
-  y = 1
-  u = 1
-  v = 0
-  while a != 0:
-    # same loop as Euclidean
+from ..Algorithms import ExtendedEuclidean
 
-    # Find q, r in b = qa + r
-    q, r = b // a, b % a
-
-    # Update a, b
-    a, b = r, a
-
-    # Perform backsubstition, update values
-    up, vp = x - u * q, y - v * q
-    x, y = u, v
-    u, v = up, vp
-  return b, x, y
-
-#Point Object
+# Point Object
 class Point:
     def __init__(self, x, y, inf = False):
         self.x = x
@@ -58,7 +31,7 @@ class Point:
     def __truediv__(self, quotient):
         return Point(self.x / quotient, self.y / quotient)
 
-#Elliptic Curve of form y^2 = x^3 + Ax + B
+# Elliptic Curve of form y^2 = x^3 + Ax + B
 class EllipticCurve:
     def __init__(self, A, B, N = 0):
         if (4*(A**3) + 27*(B**2)) == 0:

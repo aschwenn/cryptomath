@@ -2,9 +2,9 @@
 Mathematical cryptography algorithms implemented in Python
 
 ### Dev notes
-* Miller-Rabin is occasionally reporting that prime numbers are composite
+* SHOULD ADD: check that inputs are integers in every function
 * Use 'secrets' instead of 'random' for cryptographically secure random number generation: https://docs.python.org/3/library/secrets.html
-* On parallelization random number generation: https://ieeexplore.ieee.org/document/5547156
+* On parallelization of random number generation: https://ieeexplore.ieee.org/document/5547156
 
 ### Possible algorithms to implement
 

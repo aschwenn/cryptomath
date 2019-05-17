@@ -96,27 +96,5 @@ def ChineseRemainderThm(a, m, b, n):
   c = (b * m * s + a * n * t) % (m * n)
   return c, (m * n)
 
-#TODO
-def Totient(x):
-  '''
-  Computes Euler's Totient/Phi function on x\n
-  Input:
-    integer x
-  Output:
-    integer t
-  '''
-  print('Function Totient(x) is not yet implemented')
 
-def HammingWeight(x):
-  '''
-  Determines the Hamming Weight of an integer, or the number of 1s in the binary representation of that number\n
-  Input:
-    integer x
-  Output:
-    integer h
-  '''
-  h = 0
-  while x:
-    h += 1
-    x &= x - 1
-  return h
+

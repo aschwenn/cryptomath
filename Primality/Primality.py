@@ -31,12 +31,11 @@ def MillerRabin(n, warnings=False):
   if not n > 1:
     raise Exception('MillerRabin(): n must be strictly greater than 1')
   # Express as n = 2^r*d + 1
-  np = n - 1
+  d = n - 1
   r = 0
-  while np % 2 == 0:
+  while d % 2 == 0:
     r += 1
-    np = np // 2
-  d = np
+    d = d // 2
   
   witnessRange = min([n-2, floor(2*(log(n)**2))])
   aIndex = 0
@@ -51,19 +50,20 @@ def MillerRabin(n, warnings=False):
           print('The result is probabalistically determined to be prime.')
         return True
       continue
-    else:
-      for i in range(r - 1):
-        x = FastPower(x, 2, n)
-        if x == n-1:
-          # Failure to find a witness
-          aIndex += 1
-          if aIndex == len(smallPrimes):
-            if warnings:
-              print('List of small primes for Miller-Rabin bases has been exhausted for n=' + str(n))
-              print('The result is probabalistically determined to be prime.')
-            return True
-          continue
-    return False
+    failure = False
+    for i in range(r - 1):
+      x = FastPower(x, 2, n)
+      if x == n-1:
+        # Failure to find a witness
+        aIndex += 1
+        if aIndex == len(smallPrimes):
+          if warnings:
+            print('List of small primes for Miller-Rabin bases has been exhausted for n=' + str(n))
+            print('The result is probabalistically determined to be prime.')
+          return True
+        failure = True
+    if not failure:
+      return False
   return True
 
 def IsPrime(n):

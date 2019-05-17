@@ -56,8 +56,7 @@ def Factors(n, dup=False):
       factor = QuadraticSieve(n)
     else:
       # Use General Number Field Sieve
-      print('Number is too big to factor')
-      return []
+      raise Exception('Factors(): Number is too big to factor')
 
     if factor == -1:
       raise Exception('Factor(): Failure to find a factor for ' + str(n))

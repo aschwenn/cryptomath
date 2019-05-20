@@ -9,3 +9,4 @@ def QuadraticSieve(n):
     integer f (a single factor)
   '''
   raise Exception('Function QuadraticSieve(n) not yet implemented')
+  return 0

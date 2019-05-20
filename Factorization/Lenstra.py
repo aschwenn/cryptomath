@@ -9,3 +9,4 @@ def Lenstra(n):
     integer f (a single factor)
   '''
   raise Exception('Function Lenstra(n) not yet implemented')
+  return 0

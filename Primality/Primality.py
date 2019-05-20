@@ -15,7 +15,6 @@ def FermatTest(a, n):
   f = FastPower(a, n-1, n)
   return f == 1
 
-#TODO
 def MillerRabin(n, warnings=False):
   '''
   Performs the Miller-Rabin Test on possible prime n\n
@@ -74,7 +73,6 @@ def IsPrime(n):
   Outputs:
     boolean p (false if composite, true if "probably prime")
   '''
-
   if n % 2 == 0 and n != 2:
     return False
 
@@ -88,3 +86,17 @@ def IsPrime(n):
         return False
   else:
     return MillerRabin(n)
+
+def IsSophieGermainPrime(n):
+  '''
+  Determines whether n is a Sophie Germain prime, that is, it is a prime such that 2n+1 is also prime\n
+  Input:
+    integer n
+  Output:
+    boolean s
+  '''
+  if not IsPrime(n):
+    return False
+  if not IsPrime(2*n + 1):
+    return False
+  return True

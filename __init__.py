@@ -6,3 +6,4 @@ from .Polynomials import *
 from .Factorization import *
 from .EllipticCurve import *
 from .RSA import *
+from .PrimitiveRoots import *

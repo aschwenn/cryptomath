@@ -1,6 +1,12 @@
 # cryptomath
 Mathematical cryptography algorithms implemented in Python
 
+### Usage
+Usage documentation will come later once the project is more complete, but for now, here's a basic overview:
+
+Create a python script in the directory above this library and use `import cryptomath` to import the entire library. From here, any completed functions can be accessed by referencing the library and function name, such as `gcd = cryptomath.GCD(123,943)`, or `gcd, x, y = cryptomath.ExtendedEuclidean(123, 10007)`.
+To import only a specific module within the library, such as `Factorization`, you may use `from cryptomath import Factorization`. Then, the library will not need to be referenced, only the function names, such as `fact = PrimeFactorization(1234)`. Similarly, you may import only one function of a module, which can be done with `from cryptomath.Polynomials import JacobiSymbol`.
+
 ### Dev notes
 * SHOULD ADD: check that inputs are integers in every function
 * Use 'secrets' instead of 'random' for cryptographically secure random number generation: https://docs.python.org/3/library/secrets.html

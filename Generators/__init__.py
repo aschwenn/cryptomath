@@ -1,1 +1,1 @@
-from .Generators import *
+from .Generators import GenerateProbablePrime, GeneratePrimes

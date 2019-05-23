@@ -1,6 +1,6 @@
 # Number generators
 
-from ..Primality import MillerRabin
+from ..Primality import MillerRabin, IsPrime
 import threading
 from secrets import randbits
 
@@ -64,3 +64,13 @@ def GenerateProbablePrime(length):
     if MillerRabin(x):
       return x
     x += 2
+
+def GeneratePrimes(n):
+  '''
+  Generates all primes below n
+  Input:
+    integer n
+  Output:
+    list of integers
+  '''
+  return [x for x in range(n) if IsPrime(x)]

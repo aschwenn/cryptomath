@@ -1,4 +1,4 @@
-from ..Factorization import PrimeFactorization
+from ..Factorization import PrimeFactorizationSmall
 from ..Algorithms import FastPower
 from ..Polynomials import JacobiSymbol
 

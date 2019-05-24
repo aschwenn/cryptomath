@@ -16,7 +16,6 @@ def JacobiSymbol(a, n):
   '''
 
   def LegendreSymbol(a, n):
-    iteration = 0
     while True:
       if n % 2 == 0:
         raise Exception('LegendreSymbol(): Legendre Symbols are undefined for even mods')

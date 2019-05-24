@@ -29,7 +29,6 @@ def Totient(x):
   if x == 1:
     return 1
   fact = PrimeFactorization(x)
-  phi = x
   for f in fact:
     x *= (1 - (1/f[0]))
   return round(x)

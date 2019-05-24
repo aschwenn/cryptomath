@@ -11,19 +11,19 @@ To import only a specific module within the library, such as `Factorization`, yo
 These are functions which have been finalized and can be effectively used:
 
 ##### Basic Algorithms
-`Euclidean(a, b)`, Alias: `GCD(a, b)`
+`Euclidean(a, b), Alias: GCD(a, b)
 Find the GCD of a, b using the Euclidean Algorithm
   Inputs:
     integers a, b
   Outputs:
     integer GCD
-`ExtendedEuclidean(a, b)`
+ExtendedEuclidean(a, b)
 If the GCD of a, b is 1, find x, y such that ax + by = 1
   Inputs:
     integers a, b
   Outputs:
     integers GCD, x, y
-`ModularInv(a, n, prime)`
+ModularInv(a, n, prime)
 Computes the modular inverse of a mod n\n
   Inputs:
     integers a, n
@@ -31,13 +31,17 @@ Computes the modular inverse of a mod n\n
   Outputs:
     integer aInv
 
+`
+
 ##### Misc
-`HammingWeight(x)`
+`HammingWeight(x)
 Determines the Hamming Weight of an integer, or the number of 1s in the binary representation of that number
   Input:
     integer x
   Output:
     integer h
+
+`
 
 ### Dev notes
 * SHOULD ADD: check that inputs are integers in every function

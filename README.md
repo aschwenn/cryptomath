@@ -10,66 +10,58 @@ To import only a specific module within the library, such as `Factorization`, yo
 ### Usable Functions
 These are functions which have been finalized and can be effectively used:
 
-##### Basic Algorithms
-`Euclidean(a, b), Alias: GCD(a, b)
-Find the GCD of a, b using the Euclidean Algorithm
-  Inputs:
-    integers a, b
-  Outputs:
-    integer GCD
-ExtendedEuclidean(a, b)
-If the GCD of a, b is 1, find x, y such that ax + by = 1
-  Inputs:
-    integers a, b
-  Outputs:
-    integers GCD, x, y
-ModularInv(a, n, prime)
-Computes the modular inverse of a mod n\n
-  Inputs:
-    integers a, n
-    (optional) boolean prime
-  Outputs:
-    integer aInv
+##### Basic Algorithms/Functions
+* Euclidean(a, b), Alias: GCD(a, b)
+* ExtendedEuclidean(a, b)
+* ModularInv(a, n, prime (optional))
+* FastPower(a, e, n)
+* ChineseRemainderThm(a, m, b, n)
+* Totient(x)
 
-`
+##### Factorization
+* PrimeFactorization(n)
+* Factors(n, dup (optional))
+* PollardP_1(n, b (optional))
+* Pollard(n)
+
+##### Generators
+* GenerateProbablePrime(length)
+* GeneratePrimes(n)
+
+##### Polynomials
+* JacobiSymbol(a, n)
+* IsModSquare(a, n)
+* TonelliShanks(a, n)
+* ModSquareRoots(a, n)
+
+##### Primality
+* EulerTest(a, n)
+* SolovayStrassenTest(n, tries (optional))
+* FermatTest(a, n)
+* MillerRabin(n, warnings (optional))
+* IsPrime(n)
+* IsSophieGermainPrime(n)
+
+##### Primitive Roots
+* Order(a, n)
 
 ##### Misc
-`HammingWeight(x)
-Determines the Hamming Weight of an integer, or the number of 1s in the binary representation of that number
-  Input:
-    integer x
-  Output:
-    integer h
-
-`
+* HammingWeight(x)
+* SquareFree(x)
 
 ### Dev notes
 * SHOULD ADD: check that inputs are integers in every function
+* Needs further testing:
+  * IsPrimRoot()
+  * PrimRoots()
 * Use 'secrets' instead of 'random' for cryptographically secure random number generation: https://docs.python.org/3/library/secrets.html
 * On parallelization of random number generation: https://ieeexplore.ieee.org/document/5547156
 
-### Possible algorithms to implement
-
-##### Basic
-* Euclidean - done
-* Extended Euclidean - done
-* Fast-Powering - done
-* Modular Inverse - done
-* Chinese Remainder Theorem - done
-* Totient function - done
+### Further algorithms to implement
 
 ##### Polynomials
-* Jacobi/Legendre Symbols - done
-* Tonneli-Shanks - done
 * Hensel's Lemma
 * Modular Quadratic Solver
-* 3 mod 4 Square Root Shortcut - done
-
-##### Primality Tests
-* Fermat Test - done
-* Euler's Criterion - done
-* Solovay-Strassen - done
-* Miller-Rabin - done
 
 ##### Ciphers
 * Rabin Cipher
@@ -81,7 +73,6 @@ Determines the Hamming Weight of an integer, or the number of 1s in the binary r
 
 ##### Generators
 * Primitive Roots
-* Large Primes - done
 * Sophie Germain Strong Primes
 
 ##### Cryptosystems
@@ -94,7 +85,6 @@ Determines the Hamming Weight of an integer, or the number of 1s in the binary r
 ##### Factoring
 * Quadratic Sieve
 * Lenstra's Algorithm (elliptic curves)
-* Pollard's p-1 - done
 
 ##### Secret Sharing
 * Blakely (hyperplanes)

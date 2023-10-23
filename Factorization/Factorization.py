@@ -1,12 +1,14 @@
 # Factoring numbers using various techniques
+from math import log10, floor
 
+from ..utils import type_assert
 from .Pollard import Pollard, PollardP_1
 from .Lenstra import Lenstra
 from .QuadraticSieve import QuadraticSieve
-from math import log10, floor
 from ..Primality import IsPrime
 
-def PrimeFactorization(n):
+@type_assert(int)
+def PrimeFactorization(n: int):
   '''
   Returns a list of the prime factorization of n, giving factors and exponents
   Input:
@@ -24,7 +26,8 @@ def PrimeFactorization(n):
       pf.append([fac,1])
   return pf
 
-def Factors(n, dup=False):
+@type_assert(int, bool)
+def Factors(n: int, dup: bool=False):
   '''
   Returns a list of the factors of n
   Input:

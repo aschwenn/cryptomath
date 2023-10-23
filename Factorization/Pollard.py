@@ -1,12 +1,14 @@
 # Implementation of Pollard's rho algorithm for factoring integers
-
-from ..Primality.primes import *
-from ..Primality import IsPrime
 from math import floor, log
-from ..Algorithms import FastPower, GCD
 from random import randint
 
-def PollardP_1(n, b=0):
+from ..utils import type_assert
+from ..Primality.primes import *
+from ..Primality import IsPrime
+from ..Algorithms import FastPower, GCD
+
+@type_assert(int, int)
+def PollardP_1(n: int, b: int=0):
   '''
   Finds a nontrivial factor of n using Pollard's p-1 algorithm\n
   Inputs:
@@ -72,7 +74,8 @@ def PollardP_1(n, b=0):
 
   return -1
 
-def Pollard(n):
+@type_assert(int)
+def Pollard(n: int):
   '''
   Finds a nontrivial factor of n using Pollard's rho algorithm\n
   Input:
@@ -95,7 +98,8 @@ def Pollard(n):
     return -1
   return g
 
-def FactorSmall(n, dup=False):
+@type_assert(int, bool)
+def FactorSmall(n: int, dup: bool=False):
   '''
   Returns a list of the factors of n, where n is assumed to be less than 10^50\n
   Input:
@@ -134,7 +138,8 @@ def FactorSmall(n, dup=False):
 
   return factors2
 
-def PrimeFactorizationSmall(n):
+@type_assert(int)
+def PrimeFactorizationSmall(n: int):
   '''
   Returns a list of the prime factorization of n, giving factors and exponents, where n is assumed to be less than 10^50\n
   Input:

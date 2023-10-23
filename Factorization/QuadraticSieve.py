@@ -1,6 +1,8 @@
 # Implementation of the Quadratic Sieve algorithm
 
 from math import exp, floor, sqrt, log10
+
+from ..utils import type_assert
 from ..Primality import IsPrime
 from ..Polynomials import JacobiSymbol
 from ..Generators import GeneratePrimes
@@ -9,7 +11,8 @@ from ..Algorithms import GCD
 base = []
 table = []
 
-def QuadraticSieve(n):
+@type_assert(int)
+def QuadraticSieve(n: int):
   '''
   Finds a nontrivial factor of n using the Quadratic Sieve algorithm\n
   Input:
@@ -20,7 +23,8 @@ def QuadraticSieve(n):
   raise Exception('Function QuadraticSieve() not yet implemented')
   return 0
 
-def NaiveQuadraticSieve(n):
+@type_assert(int)
+def NaiveQuadraticSieve(n: int):
   global base
 
   # Set bounds for factor base
@@ -59,7 +63,8 @@ def NaiveQuadraticSieve(n):
     else:
       raise Exception('NaiveQuadraticSieve(): Failure: Found trivial factor (1)')
 
-def FactorY(y):
+@type_assert(int)
+def FactorY(y: int):
   '''
   Factors y as a combination of primes in the factor base
   Returns boolean representing pass/fail, and the factorization vector (upon success)
@@ -76,7 +81,8 @@ def FactorY(y):
     index += 1
   return True, factorization
 
-def Mod2(li):
+@type_assert(list)
+def Mod2(li: list):
   '''
   Returns li mod 2
   '''
@@ -92,5 +98,6 @@ def IsSquare(table):
   raise Exception('Function IsSquare() not yet implemented')
   return False, []
 
-def L(x):
+@type_assert(int)
+def L(x: int):
   return exp(sqrt(log10(x) * log10(log10(x))))

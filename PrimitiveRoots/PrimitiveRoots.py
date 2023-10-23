@@ -1,10 +1,12 @@
 # Functions relating to primitive roots
+from ..utils import type_assert
 from ..Polynomials import JacobiSymbol
 from ..Primality import IsPrime
 from ..Factorization import Factors, PrimeFactorization
 from ..Algorithms import FastPower, GCD
 
-def Order(a, n):
+@type_assert(int, int)
+def Order(a: int, n: int):
   '''
   Computes orda(n), or the smallest integer m such that a^m = 1 (mod n)\n
   Inputs:
@@ -19,7 +21,8 @@ def Order(a, n):
     x += 1
   return x
 
-def IsPrimRoot(g, p, fact=[]):
+@type_assert(int, int, list)
+def IsPrimRoot(g: int, p: int, fact: list=[]):
   '''
   Computes whether g is a primitive root p, or if g generates the entire group Zp
   Inputs:
@@ -54,7 +57,8 @@ def IsPrimRoot(g, p, fact=[]):
         return IsPrimRoot(g, fact[1][0])
     return False
 
-def PrimRoots(p):
+@type_assert(int)
+def PrimRoots(p: int):
   '''
   Find all primitive roots for p
   Input:

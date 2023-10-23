@@ -50,7 +50,6 @@ These are functions which have been finalized and can be effectively used:
 * SquareFree(x)
 
 ### Dev notes
-* SHOULD ADD: check that inputs are integers in every function
 * Needs further testing:
   * IsPrimRoot()
   * PrimRoots()

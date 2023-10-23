@@ -1,6 +1,9 @@
+from ..utils import type_assert
+
 # Implementation of the Shanks Babystep-Giantstep discrete logarithm solver
 
-def ShanksBabystepGiantstep(a, b, n):
+@type_assert
+def ShanksBabystepGiantstep(a: int, b: int, n: int):
   '''
   Solves the discrete logarithm a^x = b mod n using Shank's Babystep-Giantstep
   Inputs:

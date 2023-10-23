@@ -1,6 +1,9 @@
+from ..utils import type_assert
+
 # Additional algorithms that may be relevant to specific functions
 
-def HammingWeight(x):
+@type_assert(int)
+def HammingWeight(x: int):
   '''
   Determines the Hamming Weight of an integer, or the number of 1s in the binary representation of that number\n
   Input:

@@ -1,8 +1,10 @@
+from ..utils import type_assert
 from ..Factorization import PrimeFactorizationSmall
 from ..Algorithms import FastPower
 from ..Polynomials import JacobiSymbol
 
-def TonelliShanks(a, n):
+@type_assert(int, int)
+def TonelliShanks(a: int, n: int):
   '''
   Performs the Tonelli-Shanks algorithm to find modular square roots for a mod n\n
   Inputs:
@@ -40,7 +42,8 @@ def TonelliShanks(a, n):
     e = i
   return x, n-x
 
-def ModSquareRoots(a, n):
+@type_assert(int, int)
+def ModSquareRoots(a: int, n: int):
   '''
   If a is a quadratic residue mod n, return its square roots\n
   Inputs:

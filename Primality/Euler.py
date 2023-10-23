@@ -1,10 +1,12 @@
 # Primality testing based on Euler's Criterion
-
-from ..Polynomials import JacobiSymbol
-from ..Algorithms import FastPower
 from random import randint
 
-def EulerTest(a, n):
+from ..utils import type_assert
+from ..Polynomials import JacobiSymbol
+from ..Algorithms import FastPower
+
+@type_assert(int, int)
+def EulerTest(a: int, n: int):
   '''
   Performs the Euler Test to see if Euler's Criterion holds such that a^((n-1)/2) is congruent to the Jacobi Symbol of a mod n\n
   Inputs:
@@ -18,7 +20,8 @@ def EulerTest(a, n):
   j = JacobiSymbol(a, n)
   return f == j
 
-def SolovayStrassenTest(n, tries=10):
+@type_assert(int, int)
+def SolovayStrassenTest(n: int, tries: int=10):
   '''
   Performs the Solovay-Strassen Test on possible prime n\n
   Inputs:

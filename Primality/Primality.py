@@ -1,10 +1,12 @@
 # Probablistic primality testing
-
-from ..Algorithms import FastPower
 from math import log10, log, floor
+
+from ..utils import type_assert
+from ..Algorithms import FastPower
 from .primes import *
 
-def FermatTest(a, n):
+@type_assert(int, int)
+def FermatTest(a: int, n: int):
   '''
   Peforms the Fermat Test to see if Fermat's Little Theorem holds for a^(n-1) = 1 mod n\n
   Inputs:
@@ -15,7 +17,8 @@ def FermatTest(a, n):
   f = FastPower(a, n-1, n)
   return f == 1
 
-def MillerRabin(n, warnings=False):
+@type_assert(int, bool)
+def MillerRabin(n: int, warnings: bool=False):
   '''
   Performs the Miller-Rabin Test on possible prime n\n
   Input:
@@ -65,7 +68,8 @@ def MillerRabin(n, warnings=False):
       return False
   return True
 
-def IsPrime(n):
+@type_assert(int)
+def IsPrime(n: int):
   '''
   Determines probabalistically if a number is prime\n
   Input:
@@ -87,7 +91,8 @@ def IsPrime(n):
   else:
     return MillerRabin(n)
 
-def IsSophieGermainPrime(n):
+@type_assert(int)
+def IsSophieGermainPrime(n: int):
   '''
   Determines whether n is a Sophie Germain prime, that is, it is a prime such that 2n+1 is also prime\n
   Input:

@@ -1,3 +1,5 @@
+from ..utils import type_assert
+
 # Basic cryptographic ciphers
 
 #TODO
@@ -8,7 +10,8 @@ def RabinCipher():
 # https://en.wikipedia.org/wiki/Rabin_cryptosystem
 
 #TODO
-def AffineEncrypt(m, a, b, n):
+@type_assert(int, int, int, int)
+def AffineEncrypt(m: int, a: int, b: int, n: int):
   '''
   Encrypts a message m using the affine cipher: c = am + b mod n\n
   Inputs:
@@ -21,7 +24,8 @@ def AffineEncrypt(m, a, b, n):
   return 0
 
 #TODO
-def AffineDecrypt(c, a, b, n):
+@type_assert(int, int, int, int)
+def AffineDecrypt(c: int, a: int, b: int, n: int):
   '''
   Decrypts a ciphertext c using the affine cipher: m = (c - b)a^-1 mod n\n
   Inputs:

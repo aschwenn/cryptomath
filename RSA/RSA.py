@@ -1,11 +1,13 @@
 # Implementation of the RSA cryptosystem
-
-from secrets import randbelow
-from ..Generators import GenerateProbablePrime
 from math import log2, floor
+from secrets import randbelow
+
+from ..utils import type_assert
+from ..Generators import GenerateProbablePrime
 from ..Algorithms import GCD, HammingWeight, ModularInv
 
-def RSA_Public_KeyGen(length, pubout, privout):
+@type_assert(int, str, str)
+def RSA_Public_KeyGen(length: int, pubout: str, privout: str):
   '''
   Creates a large semiprime of a specified length, and creates a public and private key pair.\n
   Inputs:

@@ -1,12 +1,14 @@
 # Polynomial operations in modular arithmetic
+from math import sqrt, floor
 
+from ..utils import type_assert
 from ..Algorithms import GCD
 from ..Primality import IsPrime
 from ..Factorization import PrimeFactorizationSmall
-from math import sqrt, floor
 from ..Algorithms import FastPower
 
-def JacobiSymbol(a, n):
+@type_assert(int, int)
+def JacobiSymbol(a: int, n: int):
   '''
   Finds the Jacobi Symbol (a / n) of an integer a mod n\n
   Inputs:
@@ -97,7 +99,8 @@ def JacobiSymbol(a, n):
   else:
     return LegendreSymbol(a, n)
 
-def IsModSquare(a, n):
+@type_assert(int, int)
+def IsModSquare(a: int, n: int):
   '''
   Determines if a is a square mod n\n
   Inputs:

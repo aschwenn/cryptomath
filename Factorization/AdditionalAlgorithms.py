@@ -1,8 +1,10 @@
 # Additional algorithms using factorization that may be useful
 
+from ..utils import type_assert
 from .Factorization import PrimeFactorization
 
-def SquareFree(x):
+@type_assert(int)
+def SquareFree(x: int):
   '''
   Determines if an integer is squarefree (if its factorization contains no squares besides 1)\n
   Input:
@@ -16,7 +18,8 @@ def SquareFree(x):
       return False
   return True
 
-def Totient(x):
+@type_assert(int)
+def Totient(x: int):
   '''
   Computes Euler's Totient/Phi function on x, or the number of positive integers less than x that are coprime to x\n
   Input:

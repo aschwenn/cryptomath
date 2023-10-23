@@ -1,6 +1,9 @@
+from ..utils import type_assert
+
 # Important algorithms for cryptography
 
-def Euclidean(a, b):
+@type_assert(int, int)
+def Euclidean(a: int, b: int):
   '''
   Find the GCD of a, b using the Euclidean Algorithm\n
   Inputs:
@@ -16,7 +19,8 @@ def Euclidean(a, b):
     b = temp
   return b
 
-def GCD(a, b):
+@type_assert(int, int)
+def GCD(a: int, b: int):
   '''
   Find the GCD of a, b using the Euclidean Algorithm\n
   Alias of Euclidean(a, b)\n
@@ -28,7 +32,8 @@ def GCD(a, b):
   '''
   return Euclidean(a, b)
 
-def ExtendedEuclidean(a, b):
+@type_assert(int, int)
+def ExtendedEuclidean(a: int, b: int):
   '''
   If the GCD of a, b is 1, find x, y such that ax + by = 1\n
   Inputs:
@@ -55,7 +60,8 @@ def ExtendedEuclidean(a, b):
     u, v = up, vp
   return b, x, y
 
-def ModularInv(a, n, prime=False):
+@type_assert(int, int, bool)
+def ModularInv(a: int, n: int, prime: bool=False):
   '''
   Computes the modular inverse of a mod n\n
   Inputs:
@@ -74,7 +80,8 @@ def ModularInv(a, n, prime=False):
     else:
       raise Exception('ModularInv: ' + str(a) + ' does not have an inverse mod ' + str(n))
 
-def FastPower(a, e, n):
+@type_assert(int, int, int)
+def FastPower(a: int, e: int, n: int):
   '''
   Computes the exponentiation of a^e mod n by successive squaring\n
   Inputs:
@@ -84,7 +91,8 @@ def FastPower(a, e, n):
   '''
   return pow(a, e, n)
 
-def ChineseRemainderThm(a, m, b, n):
+@type_assert(int, int, int, int)
+def ChineseRemainderThm(a: int, m: int, b: int, n: int):
   '''
   Finds one modular congruency x = c mod mn that is equivalent to the linear congruencies x = a mod m, x = b mod n\n
   Inputs:

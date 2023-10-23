@@ -1,8 +1,10 @@
 # Number generators
 
-from ..Primality import MillerRabin, IsPrime
 import threading
 from secrets import randbits
+
+from ..utils import type_assert
+from ..Primality import MillerRabin, IsPrime
 
 possibleNum = 0
 #count = 0
@@ -25,7 +27,8 @@ def genNum(length, lock):
         lock.release()
   #print(str(threading.get_ident()) + ' closing, count=' + str(count))
 
-def GenerateProbablePrimeThreaded(length):
+@type_assert(int)
+def GenerateProbablePrimeThreaded(length: int):
   '''
   Generates a random prime number of a specified binary length
   Input:
@@ -49,7 +52,8 @@ def GenerateProbablePrimeThreaded(length):
 
   return possibleNum
 
-def GenerateProbablePrime(length):
+@type_assert(int)
+def GenerateProbablePrime(length: int):
   '''
   Generates a random prime number of a specified binary length, not multithreaded
   Input:
@@ -65,7 +69,8 @@ def GenerateProbablePrime(length):
       return x
     x += 2
 
-def GeneratePrimes(n):
+@type_assert(int)
+def GeneratePrimes(n: int):
   '''
   Generates all primes below n
   Input:
